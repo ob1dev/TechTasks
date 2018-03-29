@@ -75,7 +75,7 @@ namespace Converter.Tests
     {
       Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => NumeralsConverter.ToRoman(value));
 
-      Assert.Equal($"The value '{value}' must be between 1 and 1000.\r\nParameter name: number", ex.Message);
+      Assert.Equal($"The value '{value}' must be between 1 and 1000.{Environment.NewLine}Parameter name: number", ex.Message);
     }
 
     #endregion
