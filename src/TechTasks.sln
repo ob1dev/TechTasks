@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "automotiveMastermind", "automotiveMastermind", "{C64C5217-D64B-497D-BD85-47284F18D167}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{40E3D954-B779-49DE-B045-F96C886CC960}"
+	ProjectSection(SolutionItems) = preProject
+		automotiveMastermind\Task1\Description.md = automotiveMastermind\Task1\Description.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter", "automotiveMastermind\Task2\Converter\Converter.csproj", "{B8F941B2-AB4C-4169-9F14-7F271D494FC7}"
 EndProject
