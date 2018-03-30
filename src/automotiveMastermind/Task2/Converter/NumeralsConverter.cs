@@ -25,36 +25,60 @@ namespace Converter
         throw new ArgumentOutOfRangeException(nameof(number), $"The value '{number}' must be between 1 and 1000.");
       }
 
+      var mapping = new LinkedList<NumeralsMap>(new[] { new NumeralsMap(1,    "I"),
+                                                        new NumeralsMap(5,    "V"),
+                                                        new NumeralsMap(10,   "X"),
+                                                        new NumeralsMap(50,   "L"),
+                                                        new NumeralsMap(100,  "C"),
+                                                        new NumeralsMap(500,  "D"),
+                                                        new NumeralsMap(1000, "M") });
       var result = new StringBuilder();
-
-      var mapping = new List<NumeralsMap>() { new NumeralsMap(1,    "I"),
-                                              new NumeralsMap(5,    "V"),
-                                              new NumeralsMap(10,   "X"),
-                                              new NumeralsMap(50,   "L"),
-                                              new NumeralsMap(100,  "C"),
-                                              new NumeralsMap(500,  "D"),
-                                              new NumeralsMap(1000, "M") };
-      mapping.Reverse();
-
-      var enumerator = mapping.GetEnumerator();
-      enumerator.MoveNext();
+      var enumerator = mapping.Last;
 
       do
       {
-        if (number % enumerator.Current.ArabicNumeral != number)
+        if (number % enumerator.Value.ArabicNumeral != number)
         {
-          number -= enumerator.Current.ArabicNumeral;
-          result.Append(enumerator.Current.RomanNumeral);
+          var symbol = FindNearestSymbol(enumerator, number);
+
+          if (number > 0)
+          {
+            result.Append(symbol.Value.RomanNumeral);
+            number = number - symbol.Value.ArabicNumeral;
+          }
+          else if (number < 0)
+          {
+            result.Insert(0, symbol.Value.RomanNumeral);
+            number = number + symbol.Value.ArabicNumeral;
+          }
         }
         else
         {
-          enumerator.MoveNext();
+          enumerator = enumerator.Previous;
         }
 
       }
       while (number != 0);
 
       return result.ToString();
+    }
+
+    private static LinkedListNode<NumeralsMap> FindNearestSymbol(LinkedListNode<NumeralsMap> curentNode, int number)
+    {
+      var result = curentNode;
+      var nextNode = curentNode.Next;
+
+      if (nextNode != null)
+      {
+        double sum = curentNode.Value.ArabicNumeral + nextNode.Value.ArabicNumeral;
+
+        if (sum / 2.0 < number)
+        { 
+          result = nextNode;
+        }
+      }
+
+      return result;
     }
   }
 }
