@@ -83,27 +83,67 @@ namespace Converter.Tests
     #region Validate Alternative Forms
 
     [Fact]
-    public void Return_IIII_Given_Value_Of_4()
+    public void Return_III_Given_Value_Of_3()
+    {
+      var result = NumeralsConverter.ToRoman(3);
+
+      Assert.Equal("III", result);
+    }
+
+    [Fact]
+    public void Return_IV_Given_Value_Of_4()
     {
       var result = NumeralsConverter.ToRoman(4);
 
-      Assert.Equal("IIII", result);
+      Assert.Equal("IV", result);
     }
 
     [Fact]
-    public void Return_VIIII_Given_Value_Of_8()
+    public void Return_VI_Given_Value_Of_6()
+    {
+      var result = NumeralsConverter.ToRoman(6);
+
+      Assert.Equal("VI", result);
+    }
+
+    [Fact]
+    public void Return_VII_Given_Value_Of_7()
+    {
+      var result = NumeralsConverter.ToRoman(7);
+
+      Assert.Equal("VII", result);
+    }
+
+    [Fact]
+    public void Return_IIX_Given_Value_Of_8()
     {
       var result = NumeralsConverter.ToRoman(8);
 
-      Assert.Equal("VIII", result);
+      Assert.Equal("IIX", result);
     }
 
     [Fact]
-    public void Return_VIIII_Given_Value_Of_9()
+    public void Return_IX_Given_Value_Of_9()
     {
       var result = NumeralsConverter.ToRoman(9);
 
-      Assert.Equal("VIIII", result);
+      Assert.Equal("IX", result);
+    }
+
+    [Fact]
+    public void Return_IXX_Given_Value_Of_19()
+    {
+      var result = NumeralsConverter.ToRoman(19);
+
+      Assert.Equal("IXX", result);
+    }
+
+    [Fact]
+    public void Return_IC_Given_Value_Of_99()
+    {
+      var result = NumeralsConverter.ToRoman(99);
+
+      Assert.Equal("IC", result);
     }
 
     #endregion
