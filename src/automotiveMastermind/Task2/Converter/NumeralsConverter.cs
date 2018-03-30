@@ -6,9 +6,9 @@ namespace Converter
 {
   public class NumeralsConverter
   {
-    class NumeralsMap
+    class NumeralMap
     {
-      public NumeralsMap(int arabicNumeral, string romanNumeral)
+      public NumeralMap(int arabicNumeral, string romanNumeral)
       {
         this.ArabicNumeral = arabicNumeral;
         this.RomanNumeral = romanNumeral;
@@ -25,13 +25,13 @@ namespace Converter
         throw new ArgumentOutOfRangeException(nameof(number), $"The value '{number}' must be between 1 and 1000.");
       }
 
-      var mapping = new LinkedList<NumeralsMap>(new[] { new NumeralsMap(1,    "I"),
-                                                        new NumeralsMap(5,    "V"),
-                                                        new NumeralsMap(10,   "X"),
-                                                        new NumeralsMap(50,   "L"),
-                                                        new NumeralsMap(100,  "C"),
-                                                        new NumeralsMap(500,  "D"),
-                                                        new NumeralsMap(1000, "M") });
+      var mapping = new LinkedList<NumeralMap>(new[] { new NumeralMap(1,    "I"),
+                                                       new NumeralMap(5,    "V"),
+                                                       new NumeralMap(10,   "X"),
+                                                       new NumeralMap(50,   "L"),
+                                                       new NumeralMap(100,  "C"),
+                                                       new NumeralMap(500,  "D"),
+                                                       new NumeralMap(1000, "M") });
       var result = new StringBuilder();
       var enumerator = mapping.Last;
 
@@ -63,7 +63,7 @@ namespace Converter
       return result.ToString();
     }
 
-    private static LinkedListNode<NumeralsMap> FindNearestSymbol(LinkedListNode<NumeralsMap> curentNode, int number)
+    private static LinkedListNode<NumeralMap> FindNearestSymbol(LinkedListNode<NumeralMap> curentNode, int number)
     {
       var result = curentNode;
       var nextNode = curentNode.Next;
