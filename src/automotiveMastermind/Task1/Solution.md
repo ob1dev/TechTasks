@@ -21,3 +21,5 @@ Table: **Users**
 |Id       |Name         |
 |:-------:|:-----------:|
 |PK, guid |nvarchar(256)|
+
+> See the file `Reddit.dacpac` for more details of database schema.
