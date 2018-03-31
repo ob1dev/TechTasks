@@ -71,7 +71,7 @@ namespace Converter.Tests
     [InlineData(1001)]
     [InlineData(0)]
     [InlineData(-1)]
-    public void Throw_Exception_Given_Values_Is_Out_Of_Range(int value)
+    public void Throw_Exception_Given_Value_Of_Out_Of_Range(int value)
     {
       Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => NumeralsConverter.ToRoman(value));
 

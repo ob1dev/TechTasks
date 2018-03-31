@@ -63,14 +63,14 @@ namespace Converter
       return result.ToString();
     }
 
-    private static LinkedListNode<NumeralMap> FindNearestSymbol(LinkedListNode<NumeralMap> curentNode, int number)
+    private static LinkedListNode<NumeralMap> FindNearestSymbol(LinkedListNode<NumeralMap> currentNode, int number)
     {
-      var result = curentNode;
-      var nextNode = curentNode.Next;
+      var result = currentNode;
+      var nextNode = currentNode.Next;
 
       if (nextNode != null)
       {
-        double sum = curentNode.Value.ArabicNumeral + nextNode.Value.ArabicNumeral;
+        double sum = currentNode.Value.ArabicNumeral + nextNode.Value.ArabicNumeral;
 
         if (sum / 2.0 < number)
         { 
