@@ -1,3 +1,5 @@
+## Print matrix in spiral way
+
 From a NxN or NxM matrix, read the matrix in spiral way (top row, right column, bottom row, left column...) and print a flat array.
 
 Input:
