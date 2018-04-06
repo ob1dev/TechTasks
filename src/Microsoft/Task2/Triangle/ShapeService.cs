@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Triangle
 {
@@ -8,32 +9,31 @@ namespace Triangle
   /// </summary>
   public class ShapeService
   {
-    public TriangleType Types { get; set; }
+    public List<TriangleType> TrianglesTypes { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ShapeService"/> class.
     /// </summary>
     public ShapeService()
     {
-      this.Types = TriangleType.All;
+      this.TrianglesTypes = new List<TriangleType>()
+        {
+          TriangleType.Equilateral,
+          TriangleType.Isosceles,
+          TriangleType.Right,
+          TriangleType.Scalene
+        };
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ShapeService"/> class.
     /// </summary>
     /// <param name="options">The types of triangles that need to be classified.
-    public ShapeService(TriangleType types)
+    public ShapeService(List<TriangleType> typesList)
     {
-      this.Types = types;
+      this.TrianglesTypes = typesList;
     }
 
-    /// <summary>
-    /// Classifies the type of the specified triangle.
-    /// </summary>
-    /// <param name="a">The length of side 'a'.</param>
-    /// <param name="b">The length of side 'b'.</param>
-    /// <param name="c">The length of side 'c'.</param>
-    /// <returns>The <see cref="TriangleType"/> type.</returns>
     public TriangleType ClassifyTriangle(int a, int b, int c)
     {
       if (!this.IsRealTriangle(a, b, c))
@@ -44,32 +44,60 @@ namespace Triangle
 
       var result = TriangleType.Unknown;
 
-      if ((this.Types & TriangleType.Equilateral) != 0)
+      foreach (var type in this.TrianglesTypes)
       {
-        if (this.IsEquilateralType(a, b, c))
+        if (result != TriangleType.Unknown)
         {
-          result = TriangleType.Equilateral;
+          break;
         }
-      }
-      else if ((this.Types & TriangleType.Isosceles) != 0)
-      {
-        if (this.IsIsoscelesType(a, b, c))
+
+        switch (type)
         {
-          result = TriangleType.Isosceles;
-        }
-      }
-      else if ((this.Types & TriangleType.Right) != 0)
-      {
-        if (this.IsRightType(a, b, c))
-        {
-          result = TriangleType.Right;
-        }
-      }
-      else if ((this.Types & TriangleType.Scalene) != 0)
-      {
-        if (this.IsScaleneType(a, b, c))
-        {
-          result = TriangleType.Scalene;
+          case TriangleType.Equilateral:
+            {
+              if (this.IsEquilateralType(a, b, c))
+              {
+                result = TriangleType.Equilateral;
+              }
+
+              break;
+            }
+
+          case TriangleType.Isosceles:
+            {
+              if (this.IsIsoscelesType(a, b, c))
+              {
+                result = TriangleType.Isosceles;
+              }
+
+              break;
+            }
+
+          case TriangleType.Right:
+            {
+              if (this.IsRightType(a, b, c))
+              {
+                result = TriangleType.Right;
+              }
+
+              break;
+            }
+
+          case TriangleType.Scalene:
+            {
+              if (this.IsScaleneType(a, b, c))
+              {
+                result = TriangleType.Scalene;
+              }
+
+              break;
+            }
+
+          default:
+            {
+              result = TriangleType.Unknown;
+              break;
+            }
         }
       }
 

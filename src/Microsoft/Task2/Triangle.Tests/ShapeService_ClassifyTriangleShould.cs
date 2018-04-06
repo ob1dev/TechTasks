@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Triangle.Tests
@@ -46,7 +47,7 @@ namespace Triangle.Tests
       int b = 1;
       int c = 1;
 
-      this.shapeService.Types = TriangleType.Equilateral;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Equilateral };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -63,7 +64,7 @@ namespace Triangle.Tests
       int b = int.MaxValue;
       int c = int.MaxValue;
 
-      this.shapeService.Types = TriangleType.Equilateral;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Equilateral };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -84,7 +85,7 @@ namespace Triangle.Tests
       int b = 3;
       int c = 5;
 
-      this.shapeService.Types = TriangleType.Isosceles;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Isosceles };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -101,7 +102,7 @@ namespace Triangle.Tests
       int b = 10;
       int c = 5;
 
-      this.shapeService.Types = TriangleType.Isosceles;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Isosceles };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -118,7 +119,7 @@ namespace Triangle.Tests
       int b = 1;
       int c = 15;
 
-      this.shapeService.Types = TriangleType.Isosceles;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Isosceles };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -139,7 +140,7 @@ namespace Triangle.Tests
       int b = 8;
       int c = 10;
 
-      this.shapeService.Types = TriangleType.Right;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Right };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -156,7 +157,7 @@ namespace Triangle.Tests
       int b = 6;
       int c = 8;
 
-      this.shapeService.Types = TriangleType.Right;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Right };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -173,7 +174,7 @@ namespace Triangle.Tests
       int b = 10;
       int c = 6;
 
-      this.shapeService.Types = TriangleType.Right;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Right };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -194,7 +195,8 @@ namespace Triangle.Tests
       int b = 4;
       int c = 5;
 
-      this.shapeService.Types = TriangleType.Scalene;
+      //this.shapeService.Types = TriangleType.Scalene;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Scalene };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -211,7 +213,8 @@ namespace Triangle.Tests
       int b = 3;
       int c = 4;
 
-      this.shapeService.Types = TriangleType.Scalene;
+      //this.shapeService.Types = TriangleType.Scalene;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Scalene };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
@@ -228,7 +231,8 @@ namespace Triangle.Tests
       int b = 5;
       int c = 3;
 
-      this.shapeService.Types = TriangleType.Scalene;
+      //this.shapeService.Types = TriangleType.Scalene;
+      this.shapeService.TrianglesTypes = new List<TriangleType>() { TriangleType.Scalene };
 
       // Act
       var result = this.shapeService.ClassifyTriangle(a, b, c);
