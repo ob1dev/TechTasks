@@ -61,7 +61,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{02B9F154
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intervals", "docuSign\Task1\Intervals\Intervals.csproj", "{2BB3D69D-69C7-41CC-8F13-AF539BC40820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intervals.Tests", "docuSign\Task1\Intervals.Tests\Intervals.Tests.csproj", "{8CF86997-61D4-498D-8D29-E5EC8E934404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intervals.Tests", "docuSign\Task1\Intervals.Tests\Intervals.Tests.csproj", "{8CF86997-61D4-498D-8D29-E5EC8E934404}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenTable", "OpenTable", "{2DC4E28D-46B3-4F38-BE6E-9B85F8998E4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{ECA2C3F6-8353-488D-9629-D8072E9AF5AD}"
+	ProjectSection(SolutionItems) = preProject
+		OpenTable\Task1\Description.md = OpenTable\Task1\Description.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoRentalShop", "OpenTable\Task1\VideoRentalShop\VideoRentalShop.csproj", "{970CA427-02D9-4289-B0E1-8D69ABB09B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +118,10 @@ Global
 		{8CF86997-61D4-498D-8D29-E5EC8E934404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CF86997-61D4-498D-8D29-E5EC8E934404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CF86997-61D4-498D-8D29-E5EC8E934404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970CA427-02D9-4289-B0E1-8D69ABB09B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970CA427-02D9-4289-B0E1-8D69ABB09B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970CA427-02D9-4289-B0E1-8D69ABB09B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970CA427-02D9-4289-B0E1-8D69ABB09B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +143,8 @@ Global
 		{02B9F154-03B0-4FFD-AC7D-82DD870D3655} = {CB3B8789-65D8-4343-A547-5EE36223EC27}
 		{2BB3D69D-69C7-41CC-8F13-AF539BC40820} = {02B9F154-03B0-4FFD-AC7D-82DD870D3655}
 		{8CF86997-61D4-498D-8D29-E5EC8E934404} = {02B9F154-03B0-4FFD-AC7D-82DD870D3655}
+		{ECA2C3F6-8353-488D-9629-D8072E9AF5AD} = {2DC4E28D-46B3-4F38-BE6E-9B85F8998E4C}
+		{970CA427-02D9-4289-B0E1-8D69ABB09B38} = {ECA2C3F6-8353-488D-9629-D8072E9AF5AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFE33FA3-A7E1-4FB1-BCC9-D046FA4FE331}
