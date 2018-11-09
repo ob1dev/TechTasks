@@ -74,12 +74,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoRentalShop", "OpenTabl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{4387EA9F-74B0-4EE6-835B-CAC6FE8271B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards", "Docker\Task1\DeckOfCards\DeckOfCards.csproj", "{C0CB098F-A6DC-42C9-9C96-9490A42EC697}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeckOfCards", "Docker\Task1\DeckOfCards\DeckOfCards.csproj", "{C0CB098F-A6DC-42C9-9C96-9490A42EC697}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{5A8E1FCB-DD93-4CFB-A361-1062DE1534EC}"
 	ProjectSection(SolutionItems) = preProject
 		Docker\Task1\Description.md = Docker\Task1\Description.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards.Tests", "Docker\Task1\DeckOfCards.Tests\DeckOfCards.Tests.csproj", "{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{C0CB098F-A6DC-42C9-9C96-9490A42EC697}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0CB098F-A6DC-42C9-9C96-9490A42EC697}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0CB098F-A6DC-42C9-9C96-9490A42EC697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +166,7 @@ Global
 		{970CA427-02D9-4289-B0E1-8D69ABB09B38} = {ECA2C3F6-8353-488D-9629-D8072E9AF5AD}
 		{C0CB098F-A6DC-42C9-9C96-9490A42EC697} = {5A8E1FCB-DD93-4CFB-A361-1062DE1534EC}
 		{5A8E1FCB-DD93-4CFB-A361-1062DE1534EC} = {4387EA9F-74B0-4EE6-835B-CAC6FE8271B9}
+		{8E967E85-895C-40BE-A44C-8AF2DD3A1C8E} = {5A8E1FCB-DD93-4CFB-A361-1062DE1534EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFE33FA3-A7E1-4FB1-BCC9-D046FA4FE331}
