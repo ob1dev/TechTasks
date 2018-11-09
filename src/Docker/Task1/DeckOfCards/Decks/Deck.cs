@@ -1,31 +1,49 @@
-﻿using System;
+﻿using DeckOfCards.Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DeckOfCards.Cards;
 
 namespace DeckOfCards.Decks
 {
   public class Deck
   {
-    private List<Card> deck = new List<Card>(52);
+    public const int CollectionOf52Cards = 52;
+    private List<Card> deck;
 
     public Deck()
     {
-      foreach (var suit in Enum.GetValues(typeof(SuitType)).Cast<SuitType>())
+      this.deck = new List<Card>(CollectionOf52Cards);
+    }
+
+    public Deck(Card[] cards) : this()
+    {
+      this.deck.AddRange(cards);
+    }
+
+    public Deck(DeckType type) : this()
+    {
+      if (type is DeckType.Empty)
       {
-        foreach (var face in Enum.GetValues(typeof(FaceType)).Cast<FaceType>())
-        {
-          this.deck.Add(new Card(suit, face));
-        }
+        // Nothing to do here. Base constructor initializes an empty deck.
+      }
+      else if (type is DeckType.Ordered)
+      {
+        this.InitializeDeck();
+      }
+      else if (type is DeckType.Unordered)
+      {
+        this.InitializeDeck();
+        this.Shuffle();
+      }
+      else
+      {
+        throw new ArgumentException("Deck's type is not a recognized.", nameof(type));
       }
     }
 
-    public Deck(bool shuffled) : this()
+    public Card[] ToArray()
     {
-      if (shuffled)
-      {
-        this.Shuffle();
-      }
+      return this.deck.ToArray();
     }
 
     public Card Deal()
@@ -43,6 +61,11 @@ namespace DeckOfCards.Decks
 
     public void ReturnCard(Card card)
     {
+      if (this.deck.Count == this.deck.Capacity)
+      {
+        throw new ArgumentOutOfRangeException(nameof(card), $"The card '{card}' cannot be added. The deck already contains maximum cards of '{CollectionOf52Cards}'.");
+      }
+
       if (card != null)
       {
         this.deck.Add(card);
@@ -51,19 +74,35 @@ namespace DeckOfCards.Decks
 
     public void Shuffle()
     {
-      var deckCapacity = this.deck.Count;
-
-      for (int index = 0; index < deckCapacity - 1; index++)
+      if (this.deck.Any())
       {
-        var nextPos = this.nextPosition(index, deckCapacity);
-        var card = this.deck[index];
+        var count = this.deck.Count;
 
-        this.deck.Insert(nextPos, card);
-        this.deck.RemoveAt(index);
+        for (int index = 0; index < count; index++)
+        {
+          var newPosition = this.NewPosition(index, count);
+          var card = this.deck[index];
+
+          this.deck.RemoveAt(index);
+          this.deck.Insert(newPosition, card);
+        }
       }
     }
 
-    private int nextPosition(int currentPossition, int deckCount)
+    #region Private Methods
+
+    private void InitializeDeck()
+    {
+      foreach (var suit in Enum.GetValues(typeof(SuitType)).Cast<SuitType>())
+      {
+        foreach (var face in Enum.GetValues(typeof(FaceType)).Cast<FaceType>())
+        {
+          this.deck.Add(new Card(suit, face));
+        }
+      }
+    }
+
+    private int NewPosition(int currentPossition, int deckCount)
     {
       var random = new Random();
       var nextPosition = currentPossition;
@@ -75,5 +114,7 @@ namespace DeckOfCards.Decks
 
       return nextPosition;
     }
+
+    #endregion
   }
 }

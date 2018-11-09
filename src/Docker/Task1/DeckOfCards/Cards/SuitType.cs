@@ -2,9 +2,9 @@
 {
   public enum SuitType
   {
-    Spade,
-    Heart,
-    Club,
-    Diamond
+    Spade,   // ♠
+    Heart,   // ♥
+    Club,    // ♣
+    Diamond  // ♦
   }
 }
