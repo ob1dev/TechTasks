@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace List
 {
-  public class SinglyLinkedList
+  public class SinglyLinkedList<T>
   {
-    private SinglyLinkedListNode head;
-    private SinglyLinkedListNode tail;
+    private SinglyLinkedListNode<T> head;
+    private SinglyLinkedListNode<T> tail;
 
     public int Count { get; private set; }
 
-    public void Add(int item)
+    public void Add(T item)
     {
-      var newNode = new SinglyLinkedListNode(item);
+      var newNode = new SinglyLinkedListNode<T>(item);
 
       if (this.head == null)
       {
@@ -35,7 +35,8 @@ namespace List
       // If there is a simple sequence of just two or tree items.
       if (this.Count == 2 || this.Count == 3)
       {
-        return (this.head.Value == this.tail.Value);
+        EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+        return (comparer.Equals(this.head.Value, this.tail.Value));
       }
 
       var root = this.head;
@@ -44,7 +45,7 @@ namespace List
 
     #region Private Method
 
-    private void InserNodeToRoot(SinglyLinkedListNode newNode)
+    private void InserNodeToRoot(SinglyLinkedListNode<T> newNode)
     {
       this.head = newNode;
       this.tail = newNode;
@@ -52,7 +53,7 @@ namespace List
       this.Count++;
     }
 
-    private void InserNodeAfter(SinglyLinkedListNode node, SinglyLinkedListNode newNode)
+    private void InserNodeAfter(SinglyLinkedListNode<T> node, SinglyLinkedListNode<T> newNode)
     {
       node.Next = newNode;
       this.tail = newNode;
@@ -60,7 +61,7 @@ namespace List
       this.Count++;
     }
 
-    private bool IsPalindromeImpl(ref SinglyLinkedListNode root, SinglyLinkedListNode current, int index)
+    private bool IsPalindromeImpl(ref SinglyLinkedListNode<T> root, SinglyLinkedListNode<T> current, int index)
     {
       // If reach out the end of the list, then stop the recursion, and assume it's a palindrome. 
       if (this.Count == index)
@@ -73,7 +74,8 @@ namespace List
       // Continue only if a previous nodes are equal and doesn't reach the center node.
       if (result && this.Count / 2 <= index)
       {
-        if (root.Value != current.Value)
+        EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+        if (!comparer.Equals(root.Value, current.Value))
         {
           result = false;
         }

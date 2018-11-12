@@ -1,11 +1,11 @@
 ﻿namespace List
 {
-  class SinglyLinkedListNode
+  class SinglyLinkedListNode<T>
   {
-    public int Value { get; set; }
-    public SinglyLinkedListNode Next { get; set; }
+    public T Value { get; set; }
+    public SinglyLinkedListNode<T> Next { get; set; }
 
-    public SinglyLinkedListNode(int value)
+    public SinglyLinkedListNode(T value)
     {
       this.Value = value;
     }
