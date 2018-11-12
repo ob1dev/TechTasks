@@ -6,7 +6,7 @@ namespace SinglyLinkedList.Tests
   public class SinglyLinkedList_IsPalindromeShould
   {
     [Fact]
-    public void Return_True_Given_Sequence_Of_None()
+    public void Return_True_Given_Empty_Sequence()
     {
       // Arrange 
       var list = new SinglyLinkedList<int>();
@@ -18,11 +18,15 @@ namespace SinglyLinkedList.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Return_True_Given_Sequence_Of_1()
+    [Theory]
+    [InlineData(new[] { 1 })]
+    [InlineData(new[] { 1, 1 })]
+    [InlineData(new[] { 1, 1, 1 })]
+    [InlineData(new[] { 1, 2, 1 })]
+    public void Return_True_Given_Trivial_Sequence(int[] sequence)
     {
       // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 1 });
+      var list = new SinglyLinkedList<int>(sequence);
 
       // Act
       var actual = list.IsPalindrome();
@@ -31,11 +35,15 @@ namespace SinglyLinkedList.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Return_True_Given_Sequence_Of_1_1()
+    [Theory]
+    [InlineData(new[] { 2, 5, 5, 2 })]
+    [InlineData(new[] { 2, 5, 0, 5, 2 })]
+    [InlineData(new[] { 2, 5, 0, 0, 5, 2 })]
+    [InlineData(new[] { 2, 5, 0, 1, 0, 5, 2 })]
+    public void Return_True_Given_Palindrome_Sequence(int[] sequence)
     {
       // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 1, 1 });
+      var list = new SinglyLinkedList<int>(sequence);
 
       // Act
       var actual = list.IsPalindrome();
@@ -44,89 +52,17 @@ namespace SinglyLinkedList.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Return_True_Given_Sequence_Of_1_2_1()
+    [Theory]
+    [InlineData(new[] { 2, 5 })]
+    [InlineData(new[] { 2, 5, 0 })]
+    [InlineData(new[] { 2, 5, 5, 0 })]
+    [InlineData(new[] { 2, 5, 0, 2 })]
+    [InlineData(new[] { 2, 5, 0, 5, 1 })]
+    [InlineData(new[] { 2, 5, 0, 4, 2 })]
+    public void Return_False_Given_Not_Palindrome_Sequence(int[] sequence)
     {
       // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 1, 2, 1 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.True(actual);
-    }
-
-    [Fact]
-    public void Return_True_Given_Sequence_Of_1_1_1()
-    {
-      // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 1, 1, 1 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.True(actual);
-    }
-
-    [Fact]
-    public void Return_True_Given_Sequence_Of_2_5_5_2()
-    {
-      // Arrange 
-      var list = new List.SinglyLinkedList<int>(new[] { 2, 5, 5, 2 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.True(actual);
-    }
-
-    [Fact]
-    public void Return_False_Given_Sequence_Of_2_5()
-    {
-      // Arrange 
-      var list = new List.SinglyLinkedList<int>(new[] { 2, 5 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.False(actual);
-    }
-
-    [Fact]
-    public void Return_True_Given_Sequence_Of_2_1_3_1_2()
-    {
-      // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 2, 1, 3, 1, 2 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.True(actual);
-    }
-
-    [Fact]
-    public void Return_False_Given_Sequence_Of_2_5_5_1()
-    {
-      // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 2, 5, 5, 1 });
-
-      // Act
-      var actual = list.IsPalindrome();
-
-      // Assert
-      Assert.False(actual);
-    }
-
-    [Fact]
-    public void Return_False_Given_Sequence_Of_2_5_1_2()
-    {
-      // Arrange 
-      var list = new SinglyLinkedList<int>(new[] { 2, 5, 1, 2 });
+      var list = new SinglyLinkedList<int>(sequence);
 
       // Act
       var actual = list.IsPalindrome();
