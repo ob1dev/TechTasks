@@ -26,6 +26,18 @@ namespace List
 
     public bool IsPalindrome()
     {
+      // If a sequence of zero or one item, then it's a palindrome. 
+      if (this.Count <= 1)
+      {
+        return true;
+      }
+      
+      // If there is a simple sequence of just two or tree items.
+      if (this.Count == 2 || this.Count == 3)
+      {
+        return (this.head.Value == this.tail.Value);
+      }
+
       var root = this.head;
       return this.IsPalindromeImpl(ref root, this.head, 0);
     }
@@ -50,12 +62,6 @@ namespace List
 
     private bool IsPalindromeImpl(ref SinglyLinkedListNode root, SinglyLinkedListNode current, int index)
     {
-      // If a sequence of zero or just one item, then it's a palindrome. 
-      if (this.Count <= 1)
-      {
-        return true;
-      }
-
       // If reach out the end of the list, then stop the recursion, and assume it's a palindrome. 
       if (this.Count == index)
       {
