@@ -10,6 +10,23 @@ namespace List
 
     public int Count { get; private set; }
 
+    public SinglyLinkedList()
+    {
+    }
+
+    public SinglyLinkedList(IEnumerable<T> collection)
+    {
+      if (collection == null)
+      {
+        throw new ArgumentNullException(nameof(collection));
+      }
+
+      foreach (T item in collection)
+      {
+        this.Add(item);
+      }
+    }
+
     public void Add(T item)
     {
       var newNode = new SinglyLinkedListNode<T>(item);
