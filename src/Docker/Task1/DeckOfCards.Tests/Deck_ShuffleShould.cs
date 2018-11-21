@@ -70,7 +70,7 @@ namespace DeckOfCards.Tests
 
       // Act
       deck2.Shuffle();
-      
+
       var cards1 = deck1.ToArray();
       var cards2 = deck2.ToArray();
 
@@ -84,7 +84,7 @@ namespace DeckOfCards.Tests
       Assert.False(cards3.SequenceEqual(cards4));
     }
 
-     [Fact]
+    [Fact]
     public void Return_False_Given_Cards()
     {
       // Arrange
@@ -101,9 +101,9 @@ namespace DeckOfCards.Tests
 
       // Act
       deck.Shuffle();
-      
+
       var cards2 = deck.ToArray();
-      
+
       // Assert
       Assert.False(cards1.SequenceEqual(cards2));
     }

@@ -31,11 +31,11 @@ namespace DeckOfCards.Decks
       }
       else if (type is DeckType.Ordered)
       {
-        this.InitializeDeck();
+        this.InitDeck();
       }
       else if (type is DeckType.Unordered)
       {
-        this.InitializeDeck();
+        this.InitDeck();
         this.Shuffle();
       }
       else
@@ -83,7 +83,7 @@ namespace DeckOfCards.Decks
 
         for (int index = 0; index < count; index++)
         {
-          var newPosition = this.NewPosition(index, count);
+          var newPosition = this.SelectNewPosition(index, count);
 
           var tempCard = cards[index];
           cards[index] = cards[newPosition];
@@ -96,7 +96,7 @@ namespace DeckOfCards.Decks
 
     #region Private Methods
 
-    private void InitializeDeck()
+    private void InitDeck()
     {
       foreach (var suit in Enum.GetValues(typeof(SuitType)).Cast<SuitType>())
       {
@@ -127,7 +127,7 @@ namespace DeckOfCards.Decks
       }
     }
 
-    private int NewPosition(int currentPossition, int deckCount)
+    private int SelectNewPosition(int currentPossition, int deckCount)
     {
       var random = new Random();
       var nextPosition = currentPossition;
