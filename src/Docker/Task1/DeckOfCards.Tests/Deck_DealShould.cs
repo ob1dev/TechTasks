@@ -23,7 +23,7 @@ namespace DeckOfCards.Tests
     public void Return_Null_Too()
     {
       // Arrange 
-      var cards = new[] { new Card(SuitType.Heart, FaceType.Ten) };
+      var cards = new[] { new HeartCard(FaceType.Ten) };
       var deck = new Deck(cards);
 
       // Act
@@ -51,7 +51,7 @@ namespace DeckOfCards.Tests
     public void Return_10_Of_Heart()
     {
       // Arrange 
-      var cards = new[] { new Card(SuitType.Heart, FaceType.Ten) };
+      var cards = new[] { new HeartCard(FaceType.Ten) };
       var deck = new Deck(cards);
 
       // Act
@@ -65,10 +65,10 @@ namespace DeckOfCards.Tests
     public void Return_Ace_Of_Diamonds()
     {
       // Arrange 
-      var cards = new[] { new Card(SuitType.Diamond, FaceType.Ace),
-                          new Card(SuitType.Spade, FaceType.Two),
-                          new Card(SuitType.Heart, FaceType.Ten)
-                        };
+      var cards = new ICard[] { new DiamondCard(FaceType.Ace),
+                                new SpadeCard(FaceType.Two),
+                                new HeartCard(FaceType.Ten)
+                              };
       var deck = new Deck(cards);
 
       // Act

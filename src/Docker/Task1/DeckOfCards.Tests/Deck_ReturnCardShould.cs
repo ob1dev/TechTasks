@@ -12,7 +12,7 @@ namespace DeckOfCards.Tests
     {
       // Arrange 
       var deck = new Deck(DeckType.Empty);
-      var card = new Card(SuitType.Diamond, FaceType.Ace);
+      var card = new DiamondCard(FaceType.Ace);
 
       // Act
       deck.ReturnCard(card);
@@ -28,12 +28,12 @@ namespace DeckOfCards.Tests
     public void Return_Jack_Of_Clubs()
     {
       // Arrange      
-      var cards = new[] { new Card(SuitType.Diamond, FaceType.Ace),
-                          new Card(SuitType.Spade, FaceType.Two),
-                          new Card(SuitType.Heart, FaceType.Ten)
-                        };
+      var cards = new ICard[] { new DiamondCard(FaceType.Ace),
+                                new SpadeCard(FaceType.Two),
+                                new HeartCard(FaceType.Ten)
+                              };
       var deck = new Deck(cards);
-      var card = new Card(SuitType.Club, FaceType.Jack);
+      var card = new ClubCard(FaceType.Jack);
 
       // Act
       deck.ReturnCard(card);
@@ -50,7 +50,7 @@ namespace DeckOfCards.Tests
     {
       // Arrange      
       var deck = new Deck(DeckType.Ordered);
-      var card = new Card(SuitType.Club, FaceType.Jack);
+      var card = new ClubCard(FaceType.Jack);
 
       // Act
       Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => deck.ReturnCard(card));

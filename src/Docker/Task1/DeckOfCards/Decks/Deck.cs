@@ -8,14 +8,14 @@ namespace DeckOfCards.Decks
   public class Deck
   {
     public const int CollectionOf52Cards = 52;
-    private Queue<Card> deck;
+    private Queue<ICard> deck;
 
     public Deck()
     {
-      this.deck = new Queue<Card>(CollectionOf52Cards);
+      this.deck = new Queue<ICard>(CollectionOf52Cards);
     }
 
-    public Deck(Card[] cards) : this()
+    public Deck(ICard[] cards) : this()
     {
       foreach (var card in cards)
       {
@@ -44,14 +44,14 @@ namespace DeckOfCards.Decks
       }
     }
 
-    public Card[] ToArray()
+    public ICard[] ToArray()
     {
       return this.deck.ToArray();
     }
 
-    public Card Deal()
+    public ICard Deal()
     {
-      Card card = null;
+      ICard card = null;
 
       if (this.deck.Any())
       {
@@ -61,7 +61,7 @@ namespace DeckOfCards.Decks
       return card;
     }
 
-    public void ReturnCard(Card card)
+    public void ReturnCard(ICard card)
     {
       if (this.deck.Count == CollectionOf52Cards)
       {
@@ -90,7 +90,7 @@ namespace DeckOfCards.Decks
           cards[newPosition] = tempCard;
         }
 
-        this.deck = new Queue<Card>(cards);
+        this.deck = new Queue<ICard>(cards);
       }
     }
 
@@ -102,7 +102,27 @@ namespace DeckOfCards.Decks
       {
         foreach (var face in Enum.GetValues(typeof(FaceType)).Cast<FaceType>())
         {
-          this.deck.Enqueue(new Card(suit, face));
+          switch (suit)
+          {
+            case SuitType.Spade:
+              this.deck.Enqueue(new SpadeCard(face));
+              break;
+
+            case SuitType.Heart:
+              this.deck.Enqueue(new HeartCard(face));
+              break;
+
+            case SuitType.Club:
+              this.deck.Enqueue(new ClubCard(face));
+              break;
+
+            case SuitType.Diamond:
+              this.deck.Enqueue(new DiamondCard(face));
+              break;
+
+            default:
+              throw new ArgumentException($"The type of '{suit}' is not a recognized suit.", nameof(suit));
+          }
         }
       }
     }

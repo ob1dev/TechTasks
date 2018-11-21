@@ -88,15 +88,15 @@ namespace DeckOfCards.Tests
     public void Return_False_Given_Cards()
     {
       // Arrange
-      var cards1 = new[] { new Card(SuitType.Diamond, FaceType.Two),
-                           new Card(SuitType.Spade, FaceType.Four),
-                           new Card(SuitType.Heart, FaceType.Six),
-                           new Card(SuitType.Club, FaceType.Eight),
-                           new Card(SuitType.Diamond, FaceType.Ten),
-                           new Card(SuitType.Spade, FaceType.Queen),
-                           new Card(SuitType.Heart, FaceType.Six),
-                           new Card(SuitType.Club, FaceType.Ace),
-                         };
+      var cards1 = new ICard[] { new DiamondCard(FaceType.Two),
+                                 new SpadeCard(FaceType.Four),
+                                 new HeartCard(FaceType.Six),
+                                 new ClubCard(FaceType.Eight),
+                                 new DiamondCard(FaceType.Ten),
+                                 new SpadeCard(FaceType.Queen),
+                                 new HeartCard(FaceType.Six),
+                                 new ClubCard(FaceType.Ace),
+                               };
       var deck = new Deck(cards1);
 
       // Act
