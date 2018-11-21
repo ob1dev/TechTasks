@@ -8,16 +8,19 @@ namespace DeckOfCards.Decks
   public class Deck
   {
     public const int CollectionOf52Cards = 52;
-    private List<Card> deck;
+    private Queue<Card> deck;
 
     public Deck()
     {
-      this.deck = new List<Card>(CollectionOf52Cards);
+      this.deck = new Queue<Card>(CollectionOf52Cards);
     }
 
     public Deck(Card[] cards) : this()
     {
-      this.deck.AddRange(cards);
+      foreach (var card in cards)
+      {
+        this.deck.Enqueue(card);
+      }
     }
 
     public Deck(DeckType type) : this()
@@ -52,8 +55,7 @@ namespace DeckOfCards.Decks
 
       if (this.deck.Any())
       {
-        card = this.deck[0];
-        this.deck.RemoveAt(0);
+        card = this.deck.Dequeue();
       }
 
       return card;
@@ -61,14 +63,14 @@ namespace DeckOfCards.Decks
 
     public void ReturnCard(Card card)
     {
-      if (this.deck.Count == this.deck.Capacity)
+      if (this.deck.Count == CollectionOf52Cards)
       {
         throw new ArgumentOutOfRangeException(nameof(card), $"The card '{card}' cannot be added. The deck already contains maximum cards of '{CollectionOf52Cards}'.");
       }
 
       if (card != null)
       {
-        this.deck.Add(card);
+        this.deck.Enqueue(card);
       }
     }
 
@@ -76,16 +78,19 @@ namespace DeckOfCards.Decks
     {
       if (this.deck.Any())
       {
+        var cards = this.deck.ToArray();
         var count = this.deck.Count;
 
         for (int index = 0; index < count; index++)
         {
           var newPosition = this.NewPosition(index, count);
-          var card = this.deck[index];
 
-          this.deck.RemoveAt(index);
-          this.deck.Insert(newPosition, card);
+          var tempCard = cards[index];
+          cards[index] = cards[newPosition];
+          cards[newPosition] = tempCard;
         }
+
+        this.deck = new Queue<Card>(cards);
       }
     }
 
@@ -97,7 +102,7 @@ namespace DeckOfCards.Decks
       {
         foreach (var face in Enum.GetValues(typeof(FaceType)).Cast<FaceType>())
         {
-          this.deck.Add(new Card(suit, face));
+          this.deck.Enqueue(new Card(suit, face));
         }
       }
     }
