@@ -27,20 +27,22 @@ namespace Graph
       this.vertexes.Add(item.Name, item);
     }
 
-    public void RemoveVertex(Vertex item)
+    public bool RemoveVertex(Vertex item)
     {
       Assert.ArgumentNotNull(item, nameof(item));
 
       if (this.Exist(item))
       {
-        // Remove vertex's edges first, then remote vertex itself. 
-        foreach (var edge in item.Edges)
-        {
-          this.RemoveEdge(item, edge.Vertex);
-        }
-
-        this.vertexes.Remove(item.Name);
+        return false;
       }
+
+      // Remove vertex's edges first, then remote vertex itself. 
+      foreach (var edge in item.Edges)
+      {
+        this.RemoveEdge(item, edge.Vertex);
+      }
+
+      return this.vertexes.Remove(item.Name);
     }
 
     public void AddEdge(Vertex start, Vertex end, int weight)
@@ -48,32 +50,34 @@ namespace Graph
       Assert.ArgumentNotNull(start, nameof(start));
       Assert.ArgumentNotNull(end, nameof(end));
 
-      if (this.Exist(start) && this.Exist(end))
-      {
-        // Two vertexes must be unique.
-        if (start == end)
-        {
-          throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
-        }
+      this.ValidateIfVertexExist(start);
+      this.ValidateIfVertexExist(end);
 
-        start.AddEdge(new Edge(weight, end));
-        end.AddEdge(new Edge(weight, start));
+      // Two vertices must be unique.
+      if (start == end)
+      {
+        throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
       }
+
+      start.AddEdge(new Edge(weight, end));
+      end.AddEdge(new Edge(weight, start));
     }
 
-    public void RemoveEdge(Vertex start, Vertex end)
+    public bool RemoveEdge(Vertex start, Vertex end)
     {
       Assert.ArgumentNotNull(start, nameof(start));
       Assert.ArgumentNotNull(end, nameof(end));
 
-      if (this.Exist(start) && this.Exist(end))
-      {
-        var forwardEdge = start.Edges.Single(s => s.Vertex.Name.Equals(end.Name));
-        start.RemoveEdge(forwardEdge);
+      this.ValidateIfVertexExist(start);
+      this.ValidateIfVertexExist(end);
 
-        var backwardEdge = end.Edges.Single(s => s.Vertex.Name.Equals(start.Name));
-        end.RemoveEdge(backwardEdge);
-      }
+      var forwardEdge = start.Edges.Single(s => s.Vertex.Name.Equals(end.Name));
+      var forwardEdgeResult = start.RemoveEdge(forwardEdge);
+
+      var backwardEdge = end.Edges.Single(s => s.Vertex.Name.Equals(start.Name));
+      var backwardEdgeResult = end.RemoveEdge(backwardEdge);
+
+      return (forwardEdgeResult && backwardEdgeResult);
     }
 
     public bool Exist(Vertex item)
@@ -97,6 +101,14 @@ namespace Graph
     }
 
     #region Private Method
+
+    private void ValidateIfVertexExist(Vertex item)
+    {
+      if (this.Exist(item) == false)
+      {
+        throw new ArgumentException($"The graph does not contain the vertex '{item.Name}'.");
+      }
+    }
 
     private int FindMaxWeightedPathImpl(Vertex current, Vertex end, HashSet<string> visitedVertexes)
     {
