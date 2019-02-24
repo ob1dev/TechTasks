@@ -29,12 +29,16 @@ namespace Graph
     {
       Assert.ArgumentNotNull(item, nameof(item));
 
-      foreach (var edge in item.Edges)
+      if (this.Exist(item))
       {
-        this.RemoveEdge(item, edge.Vertex);
-      }
+        // Remove vertex's edges first, then remote vertex itself. 
+        foreach (var edge in item.Edges)
+        {
+          this.RemoveEdge(item, edge.Vertex);
+        }
 
-      this.vertexes.Remove(item.Name);
+        this.vertexes.Remove(item.Name);
+      }
     }
 
     public void AddEdge(Vertex start, Vertex end, int weight)
@@ -42,13 +46,14 @@ namespace Graph
       Assert.ArgumentNotNull(start, nameof(start));
       Assert.ArgumentNotNull(end, nameof(end));
 
-      if (start == end)
+      if (this.Exist(start) && this.Exist(end))
       {
-        throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
-      }
+        // Two vertexes must be unique.
+        if (start == end)
+        {
+          throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
+        }
 
-      if (this.vertexes.ContainsKey(start.Name) && this.vertexes.ContainsKey(end.Name))
-      {
         start.AddEdge(new Edge(weight, end));
         end.AddEdge(new Edge(weight, start));
       }
@@ -59,7 +64,7 @@ namespace Graph
       Assert.ArgumentNotNull(start, nameof(start));
       Assert.ArgumentNotNull(end, nameof(end));
 
-      if (this.vertexes.ContainsKey(start.Name) && this.vertexes.ContainsKey(end.Name))
+      if (this.Exist(start) && this.Exist(end))
       {
         var forwardEdge = start.Edges.Single(s => s.Vertex.Name.Equals(end.Name));
         start.RemoveEdge(forwardEdge);
@@ -67,6 +72,18 @@ namespace Graph
         var backwardEdge = end.Edges.Single(s => s.Vertex.Name.Equals(start.Name));
         end.RemoveEdge(backwardEdge);
       }
+    }
+
+    public bool Exist(Vertex item)
+    {
+      Assert.ArgumentNotNull(item, nameof(item));
+
+      if (!this.vertexes.ContainsKey(item.Name))
+      {
+        throw new ArgumentException($"The graph does not contains the vertex '{item.Name}'.");
+      }
+
+      return true;
     }
 
     public int FindMaxWeightedPath(Vertex start, Vertex end)
