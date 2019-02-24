@@ -10,8 +10,11 @@ namespace Graph.Tests
       // Arrange 
       var graph = new UndirectedGraph();
 
+      var a = new Vertex("A");
+      var b = new Vertex("B");
+
       // Act
-      var actual = graph.FindMaxWeightedPath(null, null);
+      var actual = graph.FindMaxWeightedPath(a, b);
 
       // Assert
       Assert.Equal(0, actual);
