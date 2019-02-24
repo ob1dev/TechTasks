@@ -21,7 +21,7 @@ namespace Graph
 
       if (this.vertexes.ContainsKey(item.Name))
       {
-        throw new ArgumentException($"The vertex with the key '{item.Name}' already exists in the graph.");
+        throw new ArgumentException($"The vertex '{item.Name}' already exists in the graph.");
       }
 
       this.vertexes.Add(item.Name, item);
