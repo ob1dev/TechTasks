@@ -84,12 +84,7 @@ namespace Graph
     {
       Assert.ArgumentNotNull(item, nameof(item));
 
-      if (!this.vertexes.ContainsKey(item.Name))
-      {
-        throw new ArgumentException($"The graph does not contains the vertex '{item.Name}'.");
-      }
-
-      return true;
+      return this.vertexes.ContainsKey(item.Name);
     }
 
     public int FindMaxWeightedPath(Vertex start, Vertex end)
