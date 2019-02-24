@@ -15,6 +15,8 @@ namespace Graph
 
     public void AddVertex(Vertex item)
     {
+      Assert.ArgumentNotNull(item, nameof(item));
+
       if (this.vertexes.ContainsKey(item.Name))
       {
         throw new ArgumentException($"An element with the key '{item.Name}' already exists in the graph.");
@@ -25,6 +27,8 @@ namespace Graph
 
     public void RemoveVertex(Vertex item)
     {
+      Assert.ArgumentNotNull(item, nameof(item));
+
       foreach (var edge in item.Edges)
       {
         this.RemoveEdge(item, edge.Vertex);
@@ -35,6 +39,9 @@ namespace Graph
 
     public void AddEdge(Vertex start, Vertex end, int weight)
     {
+      Assert.ArgumentNotNull(start, nameof(start));
+      Assert.ArgumentNotNull(end, nameof(end));
+
       if (start == end)
       {
         throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
@@ -49,6 +56,9 @@ namespace Graph
 
     public void RemoveEdge(Vertex start, Vertex end)
     {
+      Assert.ArgumentNotNull(start, nameof(start));
+      Assert.ArgumentNotNull(end, nameof(end));
+
       if (this.vertexes.ContainsKey(start.Name) && this.vertexes.ContainsKey(end.Name))
       {
         var forwardEdge = start.Edges.Single(s => s.Vertex.Name.Equals(end.Name));
@@ -61,16 +71,10 @@ namespace Graph
 
     public int FindMaxWeightedPath(Vertex start, Vertex end)
     {
-      var maxWeight = 0;
+      Assert.ArgumentNotNull(start, nameof(start));
+      Assert.ArgumentNotNull(end, nameof(end));
 
-      if (start != null && end != null)
-      {
-        var visited = new List<Vertex>();
-
-        maxWeight = this.FindMaxWeightedPathImpl(start, end, visited);
-      }
-
-      return maxWeight;
+      return this.FindMaxWeightedPathImpl(start, end, new List<Vertex>());
     }
 
     #region Private Method
