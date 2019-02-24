@@ -65,7 +65,9 @@ namespace Graph
 
       if (start != null && end != null)
       {
-        maxWeight = this.FindMaxWeightedPathImpl(null, start, end);
+        var visited = new List<Vertex>();
+
+        maxWeight = this.FindMaxWeightedPathImpl(start, end, visited);
       }
 
       return maxWeight;
@@ -73,29 +75,30 @@ namespace Graph
 
     #region Private Method
 
-    private int FindMaxWeightedPathImpl(Vertex prev, Vertex start, Vertex end)
+    private int FindMaxWeightedPathImpl(Vertex current, Vertex end, List<Vertex> visited)
     {
-      if (start == end)
+      if (current == end)
       {
         return 0;
       }
 
       var maxWeight = 0;
+      visited.Add(current);
 
-      foreach (var edge in start.Edges)
+      foreach (var edge in current.Edges)
       {
-        if (prev == edge.Vertex)
+        if (!visited.Contains(edge.Vertex))
         {
-          continue;
-        }
+          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visited);
 
-        var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(start, edge.Vertex, end);
-
-        if (maxWeight < currentWeight)
-        {
-          maxWeight = currentWeight;
+          if (maxWeight < currentWeight)
+          {
+            maxWeight = currentWeight;
+          }
         }
       }
+
+      visited.Remove(current);
 
       return maxWeight;
     }
