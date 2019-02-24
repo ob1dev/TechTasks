@@ -9,13 +9,15 @@ namespace Graph
 
     public string Name { get; }
 
+    public int Count => this.edges.Count;
+
+    public IReadOnlyList<Edge> Edges => this.edges.AsReadOnly();
+
     public Vertex(string name)
     {
       this.Name = name;
       this.edges = new List<Edge>();
     }
-
-    public IReadOnlyList<Edge> Edges => this.edges.AsReadOnly();
 
     public void AddEdge(Edge edge)
     {
