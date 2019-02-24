@@ -125,7 +125,7 @@ namespace Graph.Tests
     }
 
     [Fact]
-    public void Return_10_Given_Graph_With_4_Vertexes()
+    public void Return_10_Given_Graph_With_4_Vertexes_And_4_Edges()
     {
       // Arrange 
       var graph = new UndirectedGraph();
