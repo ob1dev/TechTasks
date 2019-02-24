@@ -19,23 +19,23 @@ namespace Graph
       this.edges = new List<Edge>();
     }
 
-    public void AddEdge(Edge edge)
+    public void AddEdge(Edge item)
     {
-      Assert.ArgumentNotNull(edge, nameof(edge));
+      Assert.ArgumentNotNull(item, nameof(item));
 
-      if (this.edges.Contains(edge))
+      if (this.edges.Contains(item))
       {
-        throw new InvalidOperationException($"The edge between vertices '{this.Name}' and '{edge.Vertex.Name}' already exists.");
+        throw new InvalidOperationException($"The edge between vertices '{this.Name}' and '{item.Vertex.Name}' already exists.");
       }
 
-      this.edges.Add(edge);
+      this.edges.Add(item);
     }
 
-    public bool RemoveEdge(Edge edge)
+    public bool RemoveEdge(Edge item)
     {
-      Assert.ArgumentNotNull(edge, nameof(edge));
+      Assert.ArgumentNotNull(item, nameof(item));
 
-      return this.edges.Remove(edge);
+      return this.edges.Remove(item);
     }
   }
 }
