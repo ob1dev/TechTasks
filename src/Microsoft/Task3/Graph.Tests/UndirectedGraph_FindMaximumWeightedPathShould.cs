@@ -155,7 +155,7 @@ namespace Graph.Tests
     }
 
     [Fact]
-    public void Return_100_Given_Graph_With_4_Vertexes_5_Edges()
+    public void Return_100_Given_Graph_With_4_Vertexes_And_5_Edges()
     {
       // Arrange 
       var graph = new UndirectedGraph();
@@ -186,7 +186,7 @@ namespace Graph.Tests
     }
 
     [Fact]
-    public void Return_70_Given_Graph_With_6_Vertexes_7_Edges()
+    public void Return_70_Given_Graph_With_6_Vertexes_And_7_Edges()
     {
       // Arrange 
       var graph = new UndirectedGraph();
