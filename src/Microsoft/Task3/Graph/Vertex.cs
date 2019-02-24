@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Graph
 {
@@ -19,6 +20,11 @@ namespace Graph
     public void AddEdge(Edge edge)
     {
       Assert.ArgumentNotNull(edge, nameof(edge));
+
+      if (this.edges.Contains(edge))
+      {
+        throw new InvalidOperationException($"The edge between vertices '{this.Name}' and '{edge.Vertex.Name}' already exists.");
+      }
 
       this.edges.Add(edge);
     }
