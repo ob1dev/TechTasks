@@ -4,32 +4,26 @@ namespace Graph
 {
   public class Vertex
   {
-    private List<Edge> edgeList;
+    private readonly List<Edge> edges;
 
     public string Name { get; }
 
     public Vertex(string name)
     {
       this.Name = name;
-      this.edgeList = new List<Edge>();
+      this.edges = new List<Edge>();
     }
 
-    public IReadOnlyList<Edge> Edges
-    {
-      get
-      {
-        return this.edgeList.AsReadOnly();
-      }
-    }
+    public IReadOnlyList<Edge> Edges => this.edges.AsReadOnly();
 
     public void AddEdge(Edge edge)
     {
-      this.edgeList.Add(edge);
+      this.edges.Add(edge);
     }
 
     public void RemoveEdge(Edge edge)
     {
-      this.edgeList.Remove(edge);
+      this.edges.Remove(edge);
     }
   }
 }

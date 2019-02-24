@@ -6,7 +6,7 @@ namespace Graph
 {
   public class UndirectedGraph
   {
-    private Dictionary<string,Vertex> vertexes;
+    private readonly Dictionary<string, Vertex> vertexes;
 
     public UndirectedGraph()
     {
