@@ -6,25 +6,25 @@ namespace Graph
 {
   public class UndirectedGraph
   {
-    private readonly Dictionary<string, Vertex> vertexes;
+    private readonly Dictionary<string, Vertex> vertices;
 
-    public int Count => this.vertexes.Count;
+    public int Count => this.vertices.Count;
 
     public UndirectedGraph()
     {
-      this.vertexes = new Dictionary<string, Vertex>();
+      this.vertices = new Dictionary<string, Vertex>();
     }
 
     public void AddVertex(Vertex item)
     {
       Assert.ArgumentNotNull(item, nameof(item));
 
-      if (this.vertexes.ContainsKey(item.Name))
+      if (this.vertices.ContainsKey(item.Name))
       {
         throw new ArgumentException($"The vertex '{item.Name}' already exists in the graph.");
       }
 
-      this.vertexes.Add(item.Name, item);
+      this.vertices.Add(item.Name, item);
     }
 
     public bool RemoveVertex(Vertex item)
@@ -42,7 +42,7 @@ namespace Graph
         this.RemoveEdge(item, edge.Vertex);
       }
 
-      return this.vertexes.Remove(item.Name);
+      return this.vertices.Remove(item.Name);
     }
 
     public void AddEdge(Vertex start, Vertex end, int weight)
@@ -84,7 +84,7 @@ namespace Graph
     {
       Assert.ArgumentNotNull(item, nameof(item));
 
-      return this.vertexes.ContainsKey(item.Name);
+      return this.vertices.ContainsKey(item.Name);
     }
 
     public int FindMaxWeightedPath(Vertex start, Vertex end)
@@ -105,7 +105,7 @@ namespace Graph
       }
     }
 
-    private int FindMaxWeightedPathImpl(Vertex current, Vertex end, HashSet<string> visitedVertexes)
+    private int FindMaxWeightedPathImpl(Vertex current, Vertex end, HashSet<string> visitedVertices)
     {
       if (current == end)
       {
@@ -113,13 +113,13 @@ namespace Graph
       }
 
       var maxWeight = 0;
-      visitedVertexes.Add(current.Name);
+      visitedVertices.Add(current.Name);
 
       foreach (var edge in current.Edges)
       {
-        if (!visitedVertexes.Contains(edge.Vertex.Name))
+        if (!visitedVertices.Contains(edge.Vertex.Name))
         {
-          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visitedVertexes);
+          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visitedVertices);
 
           if (maxWeight < currentWeight)
           {
@@ -128,7 +128,7 @@ namespace Graph
         }
       }
 
-      visitedVertexes.Remove(current.Name);
+      visitedVertices.Remove(current.Name);
 
       return maxWeight;
     }
