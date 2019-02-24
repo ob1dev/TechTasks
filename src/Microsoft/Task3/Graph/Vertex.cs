@@ -18,12 +18,16 @@ namespace Graph
 
     public void AddEdge(Edge edge)
     {
+      Assert.ArgumentNotNull(edge, nameof(edge));
+
       this.edges.Add(edge);
     }
 
     public void RemoveEdge(Edge edge)
     {
       this.edges.Remove(edge);
+      Assert.ArgumentNotNull(edge, nameof(edge));
+
     }
   }
 }
