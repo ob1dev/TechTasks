@@ -23,11 +23,11 @@ namespace Graph
       this.edges.Add(edge);
     }
 
-    public void RemoveEdge(Edge edge)
+    public bool RemoveEdge(Edge edge)
     {
-      this.edges.Remove(edge);
       Assert.ArgumentNotNull(edge, nameof(edge));
 
+      return this.edges.Remove(edge);
     }
   }
 }
