@@ -93,12 +93,12 @@ namespace Graph
       Assert.ArgumentNotNull(start, nameof(start));
       Assert.ArgumentNotNull(end, nameof(end));
 
-      return this.FindMaxWeightedPathImpl(start, end, new List<Vertex>());
+      return this.FindMaxWeightedPathImpl(start, end, new HashSet<string>());
     }
 
     #region Private Method
 
-    private int FindMaxWeightedPathImpl(Vertex current, Vertex end, List<Vertex> visited)
+    private int FindMaxWeightedPathImpl(Vertex current, Vertex end, HashSet<string> visitedVertexes)
     {
       if (current == end)
       {
@@ -106,13 +106,13 @@ namespace Graph
       }
 
       var maxWeight = 0;
-      visited.Add(current);
+      visitedVertexes.Add(current.Name);
 
       foreach (var edge in current.Edges)
       {
-        if (!visited.Contains(edge.Vertex))
+        if (!visitedVertexes.Contains(edge.Vertex.Name))
         {
-          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visited);
+          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visitedVertexes);
 
           if (maxWeight < currentWeight)
           {
@@ -121,7 +121,7 @@ namespace Graph
         }
       }
 
-      visited.Remove(current);
+      visitedVertexes.Remove(current.Name);
 
       return maxWeight;
     }
