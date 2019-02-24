@@ -6,21 +6,21 @@ namespace Graph
 {
   public class UndirectedGraph
   {
-    private List<Vertex> vertexList;
+    private Dictionary<string,Vertex> vertexes;
 
     public UndirectedGraph()
     {
-      this.vertexList = new List<Vertex>();
+      this.vertexes = new Dictionary<string, Vertex>();
     }
 
     public void AddVertex(Vertex item)
     {
-      if (this.vertexList.Contains(item))
+      if (this.vertexes.ContainsKey(item.Name))
       {
-        throw new ArgumentException("An element with the same key already exists in the graph.");
+        throw new ArgumentException($"An element with the key '{item.Name}' already exists in the graph.");
       }
 
-      this.vertexList.Add(item);
+      this.vertexes.Add(item.Name, item);
     }
 
     public void RemoveVertex(Vertex item)
@@ -30,17 +30,17 @@ namespace Graph
         this.RemoveEdge(item, edge.Vertex);
       }
 
-      this.vertexList.Remove(item);
+      this.vertexes.Remove(item.Name);
     }
 
     public void AddEdge(Vertex start, Vertex end, int weight)
     {
       if (start == end)
       {
-        throw new ArgumentException("An edge cannot be added between a single vertex.");
+        throw new ArgumentException($"An edge cannot be added between the single vertex '{start.Name}'.");
       }
 
-      if (this.vertexList.Contains(start) && this.vertexList.Contains(end))
+      if (this.vertexes.ContainsKey(start.Name) && this.vertexes.ContainsKey(end.Name))
       {
         start.AddEdge(new Edge(weight, end));
         end.AddEdge(new Edge(weight, start));
@@ -49,7 +49,7 @@ namespace Graph
 
     public void RemoveEdge(Vertex start, Vertex end)
     {
-      if (this.vertexList.Contains(start) && this.vertexList.Contains(end))
+      if (this.vertexes.ContainsKey(start.Name) && this.vertexes.ContainsKey(end.Name))
       {
         var forwardEdge = start.Edges.Single(s => s.Vertex.Name.Equals(end.Name));
         start.RemoveEdge(forwardEdge);
