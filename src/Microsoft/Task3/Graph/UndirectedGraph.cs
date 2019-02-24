@@ -8,6 +8,8 @@ namespace Graph
   {
     private readonly Dictionary<string, Vertex> vertexes;
 
+    public int Count => this.vertexes.Count;
+
     public UndirectedGraph()
     {
       this.vertexes = new Dictionary<string, Vertex>();
