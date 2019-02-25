@@ -117,19 +117,20 @@ namespace Graph
 
       foreach (var edge in current.Edges)
       {
-        if (!visitedVertices.Contains(edge.Vertex.Name))
+        if (visitedVertices.Contains(edge.Vertex.Name))
         {
-          var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visitedVertices);
+          continue;
+        }
 
-          if (maxWeight < currentWeight)
-          {
-            maxWeight = currentWeight;
-          }
+        var currentWeight = edge.Weight + this.FindMaxWeightedPathImpl(edge.Vertex, end, visitedVertices);
+
+        if (currentWeight > maxWeight)
+        {
+          maxWeight = currentWeight;
         }
       }
 
       visitedVertices.Remove(current.Name);
-
       return maxWeight;
     }
 
