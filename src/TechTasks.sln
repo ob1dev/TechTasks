@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "automotiveMastermind", "automotiveMastermind", "{C64C5217-D64B-497D-BD85-47284F18D167}"
 EndProject
@@ -97,9 +97,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{D4C5AFF3
 		Microsoft\Task3\Description.md = Microsoft\Task3\Description.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Microsoft\Task3\Graph\Graph.csproj", "{BB92EBCF-F1A7-4548-AE9D-E7E061A63B6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph", "Microsoft\Task3\Graph\Graph.csproj", "{BB92EBCF-F1A7-4548-AE9D-E7E061A63B6D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Tests", "Microsoft\Task3\Graph.Tests\Graph.Tests.csproj", "{B1707EF2-EE77-47D4-A431-0BF2388CDB1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tesla", "Tesla", "{DD261E96-2156-47BE-A124-35DCAB714AFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{5C18F4AC-3092-451F-9E39-40B6856CA90F}"
+	ProjectSection(SolutionItems) = preProject
+		Tesla\Task1\Description.md = Tesla\Task1\Description.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dice", "Tesla\Task1\Dice\Dice.csproj", "{322AB076-2FE8-43B6-9CD2-51979138F1E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +184,10 @@ Global
 		{B1707EF2-EE77-47D4-A431-0BF2388CDB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1707EF2-EE77-47D4-A431-0BF2388CDB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1707EF2-EE77-47D4-A431-0BF2388CDB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +220,9 @@ Global
 		{D4C5AFF3-8294-461D-9F14-30F2681FED10} = {4B31D763-7865-4DBB-B7B2-6A8A97F65437}
 		{BB92EBCF-F1A7-4548-AE9D-E7E061A63B6D} = {D4C5AFF3-8294-461D-9F14-30F2681FED10}
 		{B1707EF2-EE77-47D4-A431-0BF2388CDB1E} = {D4C5AFF3-8294-461D-9F14-30F2681FED10}
+		{5C18F4AC-3092-451F-9E39-40B6856CA90F} = {DD261E96-2156-47BE-A124-35DCAB714AFE}
+		{322AB076-2FE8-43B6-9CD2-51979138F1E3} = {5C18F4AC-3092-451F-9E39-40B6856CA90F}
+		{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB} = {5C18F4AC-3092-451F-9E39-40B6856CA90F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFE33FA3-A7E1-4FB1-BCC9-D046FA4FE331}
