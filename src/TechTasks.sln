@@ -110,6 +110,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{5C18F4AC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dice", "Tesla\Task1\Dice\Dice.csproj", "{322AB076-2FE8-43B6-9CD2-51979138F1E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dice.Tests", "Tesla\Task1\Dice.Tests\Dice.Tests.csproj", "{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,10 @@ Global
 		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{322AB076-2FE8-43B6-9CD2-51979138F1E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F577BA0-76CF-4A4C-9C46-540A2AB6D1BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
