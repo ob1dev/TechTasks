@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DiceTable.Dice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Dice
+namespace DiceTable
 {
   public class Table
   {

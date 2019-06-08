@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dice\Dice.csproj" />
+    <ProjectReference Include="..\Dice\DiceTable.csproj" />
   </ItemGroup>
 
 </Project>

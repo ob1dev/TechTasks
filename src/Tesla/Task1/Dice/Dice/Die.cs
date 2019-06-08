@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dice
+namespace DiceTable.Dice
 {
   public class Die
   {

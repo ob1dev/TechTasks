@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using DiceTable.Dice;
+using Xunit;
 
-namespace Dice.Tests
+namespace DiceTable.Tests
 {
   public class Die_TopSideShould
   {

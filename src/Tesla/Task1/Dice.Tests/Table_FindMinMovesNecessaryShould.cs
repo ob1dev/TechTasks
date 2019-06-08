@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Dice.Tests
+namespace DiceTable.Tests
 {
   public class Table_FindMinMovesNecessaryShould
   {

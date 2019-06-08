@@ -1,4 +1,4 @@
-﻿namespace Dice
+﻿namespace DiceTable.Dice
 {
   public enum MovesNecessary
   {
