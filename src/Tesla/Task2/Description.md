@@ -16,6 +16,7 @@ Then, after sorting each slice and joining them together, the whole array will b
 The array cannot be split into smaller slices. It has to be sorted all at once.
 
 3. Given A = [2, 1, 6, 4, 3, 7], the function should return 3.
+The array can be split into three slices: [2, 1], [6, 4, 3] and [7].
 
 Write an efficient algorithm for the following assumptions:
 
